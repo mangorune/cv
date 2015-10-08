@@ -15,23 +15,23 @@
 % This is a helpful package that puts math inside length specifications
 \usepackage{calc}
 
-% Simpler bibsection for CV sections
-% (thanks to natbib for inspiration)
-\makeatletter
-\newlength{\bibhang}
-\setlength{\bibhang}{1em}
-\newlength{\bibsep}
-{\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
-\newenvironment{bibsection}%
-{\vspace{-\baselineskip}\begin{list}{}{%
-      \setlength{\leftmargin}{\bibhang}%
-      \setlength{\itemindent}{-\leftmargin}%
-      \setlength{\itemsep}{\bibsep}%
-      \setlength{\parsep}{\z@}%
-      \setlength{\partopsep}{0pt}%
-      \setlength{\topsep}{0pt}}}
-  {\end{list}\vspace{-.6\baselineskip}}
-\makeatother
+% % Simpler bibsection for CV sections
+% % (thanks to natbib for inspiration)
+% \makeatletter
+% \newlength{\bibhang}
+% \setlength{\bibhang}{1em}
+% \newlength{\bibsep}
+% {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+% \newenvironment{bibsection}%
+% {\vspace{-\baselineskip}\begin{list}{}{%
+%       \setlength{\leftmargin}{\bibhang}%
+%       \setlength{\itemindent}{-\leftmargin}%
+%       \setlength{\itemsep}{\bibsep}%
+%       \setlength{\parsep}{\z@}%
+%       \setlength{\partopsep}{0pt}%
+%       \setlength{\topsep}{0pt}}}
+%   {\end{list}\vspace{-.6\baselineskip}}
+% \makeatother
 
 % Layout: Puts the section titles on left side of page
 \reversemarginpar
@@ -69,11 +69,11 @@
             includemp]{geometry}
 
 %% Use these lines for A4-sized paper
-%\usepackage[paper=a4paper,
+% \usepackage[paper=a4paper,
 %            %includefoot, % Uncomment to put page number above margin
-%            marginparwidth=30.5mm,    % Length of section titles
-%            marginparsep=1.5mm,       % Space between titles and text
-%            margin=25mm,              % 25mm margins
+%            marginparwidth=2.2cm,    % Length of section titles
+%            marginparsep=1.0mm,       % Space between titles and text
+%            margin=20mm,              % 25mm margins
 %            includemp]{geometry}
 
 %% More layout: Get rid of indenting throughout entire document
@@ -190,15 +190,6 @@
 % if there is a needed pagebreak nearby.
 \newcommand{\blankline}{\quad\pagebreak[2]\vspace{-0.3\baselineskip}}
 
-% For \url{SOME_URL}, links SOME_URL to the url SOME_URL
-\providecommand*\url[1]{\href{#1}{#1}}
-% Same as above, but pretty-prints SOME_URL in teletype fixed-width font
-\renewcommand*\url[1]{\href{#1}{\texttt{#1}}}
-
-% For \email{ADDRESS}, links ADDRESS to the url mailto:ADDRESS
-\providecommand*\email[1]{\href{mailto:#1}{#1}}
-% Same as above, but pretty-prints ADDRESS in teletype fixed-width font
-%\renewcommand*\email[1]{\href{mailto:#1}{\texttt{#1}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -305,219 +296,336 @@
 \newcommand{\ctan}{\textsc{Ctan}}
 \newcommand{\gnu}{\textsc{Gnu}}
 
+\newenvironment{workitem}[3]{%
+  \textbf{#1} \hfill \textbf{#2} \\
+  \emph{#3} \\
+}{%
+}
+
 %\usepackage{tabularx}
 
 \begin{document}
 \makeheading{Benjamin Johnson}
 %\thispagestyle{firststyle}
 
-\section{Contact Information}
+\section{Contact}% Information}
 %
-% NOTE: Mind where the & separators and \\ breaks are in the following
-%       table.
-%
-% ALSO: \rcollength is the width of the right column of the table
-%       (adjust it to your liking; default is 1.85in).
-%
-%\newlength{\rcollength}\setlength{\rcollength}{1.75in}
-%
-%\begin{tabular}[t]
-%  {@{}p{\textwidth-\rcollength-2.3in}p{2.3in}p{\rcollength}}
+%% note that all lines after the section header must be commented in order for
+%% the table to be positioned on the same line.
+%%% Contact information
 \begin{tabular}[t]
   {@{}p{4cm}>{\centering\arraybackslash}p{\textwidth-9.5cm}p{5.5cm}}
-  Harvey Mudd College    & OpenPGP Fingerprint & \href{tel:3477626467}{+1\,347\,762\,6467} \\
-  340 East Foothill Blvd & \texttt{429C 43B8 94F7 67B4 D167} & \href{mailto:mangorune@gmail.com}{mangorune@gmail.com} \\
-  Claremont, CA 91711    & \texttt{D46C E50C F045 9621 433F} & \href{https://www.linkedin.com/in/mangorune}{linkedin.com/in/mangorune}
+  \begin{tabular}[t]{@{}l@{}}
+    Harvey Mudd College \\
+    340 East Foothill Blvd \\
+    Claremont, CA 91711
+  \end{tabular}
+  &
+  \begin{tabular}[t]{@{}c@{}}
+    OpenPGP Fingerprint \\
+    \texttt{429C 43B8 94F7 67B4 D167} \\
+    \texttt{D46C E50C F045 9621 433F}
+  \end{tabular}
+  &
+  \begin{tabular}[t]{@{}l@{}}
+    \href{tel:3477626467}{+1\,347\,762\,6467} \\
+    \href{mailto:mangorune@gmail.com}{mangorune@gmail.com} \\
+    \href{https://www.linkedin.com/in/mangorune}{linkedin.com/in/mangorune}
+  \end{tabular}
 \end{tabular}
 
-
-
-
+%% This section is a bit silly
 % \section{Objective}
-% This is silly
 
 \section{Education}
-    \textbf{Harvey Mudd College}, Claremont, California
-    \hfill \textbf{Expected Graduation: May 2016} \\
-    \textit{Physics Major}
-    %\begin{innerlist}
-    %\item Current GPA: 2.84
-    %\item
+\textbf{Harvey Mudd College}, Claremont, California
+\hfill \textbf{Expected Graduation: May 2016} \\
+\textit{Physics Major}
+% \begin{innerlist}
+% \item Current GPA: 2.9
+% \item
 
-      \begin{tabular}{ccc}
-        \multicolumn{3}{c}{\textsc{Selected Coursework}} \\
-        Data Structures \& Program Dev. &
-        Discrete Mathematics &
-        Theoretical Mechanics \\
-        Computational Biology &
-        Intermediate Linear Algebra &
-        Quantum Mechanics \\
-        Adv. Topics in Algorithms &
-        Mathematical Analysis I &
-        Quantum Information
-      \end{tabular}
-      % Computability and Logic
-      % Computer Systems
+%%%   Choose from these courses
+%%   (This is a subset of the courses I've taken at Mudd)
+\begin{tabular}
+  {@{}>{\centering\arraybackslash}p{0.33\textwidth}
+    >{\centering\arraybackslash}p{0.33\textwidth}
+    p{0.33\textwidth}@{}}
+  % \multicolumn{3}{c}{
+  & \textsc{Selected Coursework} & \\
+                                   %} \\
+  \begin{tabular}[t]{@{}c@{}}
+    % Data Structures \& Program Dev. \\
+    Computational Biology \\
+    % Computability and Logic \\
+    Computer Systems \\
+    Adv. Topics in Algorithms
+  \end{tabular} &
 
-      % Differential Equations and Linear Algebra II
-      % Multivariable Calculus,
+  \begin{tabular}[t]{@{}c@{}}
+    Discrete Mathematics \\
+    % Intermediate Linear Algebra \\
+    Real Analysis \\ % Mathematical Analysis I \\
+    Partial Diff. Equations % Intro. to Partial Diff. Eqs.
+  \end{tabular} &
 
-      % Electromagnetic Theory \& Optics,
-      % Computational Methods in Physics
-    %\end{innerlist}
+  \begin{tabular}[t]{@{}c@{}}
+    Theoretical Mechanics \\
+    % Quantum Mechanics \\
+    Quantum Information \\
+    Comp. Methods in Physics
+    % Electromagnetic Fields
+    % Stat. Mech. and Thermo.
+  \end{tabular}
+\end{tabular}
 
-    % \blankline
+% \end{innerlist}
 
-    % \textbf{McMinnville High School}, McMinnville, Oregon
-    % \hfill \textbf{June 2011}
-    % \begin{innerlist}
-    % \item Cumulative GPA: 4.0; Valedictorian
-    % % \item AP Test score of 5 in: Calculus BC, Computer Science A,
-    % %   Biology, Physics C, and US History.
-    % \item Engineeing and Aerospace Sciences Academy
-    %   (\EASA{}), 2008--2010
-    % \end{innerlist}
+% \blankline
 
-\section{Software Skills}
-    Proficient: \LaTeX, Python, C/\cpp{}, Java. \\
-    Familiar: *nix Shell Scripting, Mathematica, \igor{}, \matlab{},
-    \html{}.
+% \textbf{McMinnville High School}, McMinnville, Oregon
+% \hfill \textbf{June 2011}
+% \begin{innerlist}
+% \item Cumulative GPA: 4.0; Valedictorian
+% % \item AP Test score of 5 in: Calculus BC, Computer Science A,
+% %   Biology, Physics C, and US History.
+% \item Engineeing and Aerospace Sciences Academy
+%   (\EASA{}), 2008--2010
+% \end{innerlist}
 
-\section{Work Experience}
-    \textbf{Software Engineering Intern}
-    \hfill \textbf{May 2014 -- August 2014} \\
-    \textit{Google, Mountain View, California} \\
-    Worked on the web rendering pipeline within the Knowledge: Search
-    Infrastructure group.
-    \begin{innerlist}
-    \item Wrote the foundation of a new load-management framework for all
-      back-end web rendering.
-    % These two didn't really make enough progress to be worth
-    % mentioning.
+\section{Software}% Skills}
+%
+Proficient: \LaTeX, Python, C/\cpp{}, \emph{Mathematica}. \\
+Familiar: Git, *nix Shell Scripting, Java, \igor{}, \matlab{}, \html{}.
+
+\section{Work}% Experience}
+%
+\begin{workitem}
+  {Software Engineering Intern}
+  {May 2014 -- August 2014}
+  {Google, Mountain View, California}
+  %
+  Worked on the web rendering pipeline within the Knowledge: Search
+  Infrastructure group.
+  \begin{innerlist}
+  \item Wrote the foundation of a new load-management framework for all back-end
+    web rendering.
+  \end{innerlist}
+\end{workitem}
+
+\blankline
+
+\begin{workitem}
+  {Computer Science Grader and Tutor}
+  {September 2012 -- December 2013}
+  {Harvey Mudd College, Claremont, California}
+\end{workitem}
+
+% \blankline
+
+\begin{workitem}
+  {Technical Intern, Level 3}
+  {May 2013 -- August 2013}
+  {Pacific Northwest National Laboratory, Richland, Washington}
+  %
+  Worked on social media analytics and algorithm development in the Knowledge
+  Discovery and Informatics group %
+  (\href{http://kdi.pnnl.gov/}{kdi.pnnl.gov}). %
+  Sponsored by the National Security Internship Program %
+  (\href{http://science-ed.pnnl.gov/nsip/}{science-ed.pnnl.gov/nsip}).
+  \begin{innerlist}
+  \item Rebuilt corrupt \SI{12}{\tebi\byte} document index from
+    \SI{83}{\tebi\byte} raw data store.
+  \item Developed flexible load balancer for social media search framework
+    running on a \slurm{} cluster.
+    %% These two didn't really make enough progress to be worth
+    %% mentioning.
     % \item Designing stochastic, parallel version of Latent Dirichlet
     %   Allocation (LDA) for topic modeling on an internal \boinc{} grid.
     % \item Tying Adaptive Poisson-Boltzmann Solver (\apbs{})
     %   solvation calculations into \cuda{} libraries.
-    \end{innerlist}
+  \end{innerlist}
+\end{workitem}
 
-    \blankline
+\blankline
 
-    \textbf{Computer Science Grader and Tutor}
-    \hfill \textbf{September 2012 -- December 2013} \\
-    \textit{Harvey Mudd College, Claremont, California}
+\begin{workitem}
+  {Student Researcher}
+  {June 2012 -- July 2012}
+  {Harvey Mudd College, Claremont, California}
+  %
+  Worked independently to set up and operate a real-time system for monitoring
+  local atmospheric levels of light-absorbing, water-soluble organic
+  aerosol. For more information on the Hawkins Lab: %
+  \href{http://newwww.hmc.edu/hawkinslab/LeliaHawkins_HMC/Welcome.html}
+  {hmc.edu/hawkinslab}.
+\end{workitem}
 
-    \blankline
+% \blankline
 
-    \textbf{Technical Intern, Level 3}
-    \hfill \textbf{May 2013 -- August 2013} \\
-    \textit{Pacific Northwest National Laboratory,
-      Richland, Washington} \\
-    Worked on social media analytics and algorithm development in the
-    Knowledge Discovery and Informatics group
-    (\href{http://kdi.pnnl.gov/}{kdi.pnnl.gov}). Sponsored by the
-    National Security Internship Program
-    (\href{http://science-ed.pnnl.gov/nsip/}{science-ed.pnnl.gov/nsip}).
-    \begin{innerlist}
-    \item Rebuilt corrupt \SI{12}{\tebi\byte} document index from
-      \SI{83}{\tebi\byte} raw data store.
-    \item Developed flexible load balancer for social media search
-      framework running on a \slurm{} cluster.
-    % These two didn't really make enough progress to be worth
-    % mentioning.
-    % \item Designing stochastic, parallel version of Latent Dirichlet
-    %   Allocation (LDA) for topic modeling on an internal \boinc{} grid.
-    % \item Tying Adaptive Poisson-Boltzmann Solver (\apbs{})
-    %   solvation calculations into \cuda{} libraries.
-    \end{innerlist}
+% \begin{workitem}
+%   {Chemistry Stockroom Assistant}
+%   {September 2011 -- December 2011}
+%   {Harvey Mudd College, Claremont, California}
+%   %
+% \end{workitem}
 
-    \blankline
 
-    \textbf{Student Researcher}
-    \hfill \textbf{June 2012 -- July 2012} \\
-    \textit{Harvey Mudd College, Claremont, California} \\
-    Worked independently to set up and operate a real-time system for
-    monitoring local atmospheric levels of light-absorbing,
-    water-soluble organic aerosol. For more information on the Hawkins
-    Lab:
-    \href{http://newwww.hmc.edu/hawkinslab/LeliaHawkins_HMC/Welcome.html}
-    {hmc.edu/hawkinslab}
+%\section{Other Project Experience}
+\section{Projects}
+%
+\begin{workitem}
+  {Mathematics Clinic}
+  {August 2015 -- Present}
+  {Harvey Mudd College / HRL Laboratories}
+  %
+  Year-long senior capstone sponsored by HRL Laboratories. \enquote{Analysis
+    of Quantum Communication Network Protocols for a Distributed Randomness
+    Beacon}. Team tasks:
+  \begin{innerlist}
+  \item Specify distributed randomness beacons of interest, then characterize
+    resilience to noise and malicious nodes within the network.
+  \item Exhaustively simulate smaller beacons with a mix of Python and \cpp{}.
+  \item Analyze beacons by hand to identify scale-invariant properties.
+  \end{innerlist}
+\end{workitem}
 
-    % \blankline
+\blankline
 
-    % \textbf{Chemistry Stockroom Assistant}
-    % \hfill \textbf{September 2011 -- December 2011} \\
-    % \textit{Harvey Mudd College, Claremont, California}
+\begin{workitem}
+  {Server Administration}
+  {May 2012 -- Present}
+  {Claremont, California}
+  %
+  Independent project providing general-purpose shared storage for the school
+  community as well as local mirrors of external resources. Took over from a
+  graduating senior.
+  \begin{innerlist}
+  \item Reconfigured Arch Linux installation to utilize recent system
+    improvements like systemd.
+  \item Extended available storage space from \SI{9}{\tebi\byte} to
+    \SI{36}{\tebi\byte}.
+  \item Added mirrors of open source project repositories including Arch Linux,
+    \ctan{}, \gnu{}, Apache, English Wikipedia, and Wikileaks.
+  \end{innerlist}
+\end{workitem}
 
-\section{Other Project Experience}
-    \textbf{Server Administrator}
-    \hfill \textbf{May 2012 -- Present} \\
-    \textit{Claremont, California} \\
-    Independent project providing general-purpose shared storage for the
-    school community as well as local mirrors of external resources. Took over
-    from a graduating senior.
-    \begin{innerlist}
-    \item Reconfigured Arch Linux installation to utilize recent system
-      improvements like systemd.
-    \item Extended available storage space from \SI{9}{\tebi\byte} to
-      \SI{36}{\tebi\byte}.
-    \item Added mirrors of open source project repositories including Arch
-      Linux, \ctan{}, \gnu{}, Apache, English Wikipedia, and Wikileaks.
-    \end{innerlist}
+% \blankline
 
-    \blankline
+% \begin{workitem}
+%   {Data Structures and Program Development}
+%   % CS 70 "Data Structures / Program Development
+%   {January 2012 -- May 2012}
+%   {Harvey Mudd College, Claremont, California}
+%   %
+%   Software development course in \cpp{} utilizing Subversion, Valgrind, and
+%   \gdb{}.  Projects were pair-programmed and included a \risc{} memory cache
+%   simulator, a spell checker, a learning rock-paper-scissors player,
+%   refactoring a genetic algorithm, and implementations of BigInt, HashSet, and
+%   TreeSet.
+% \end{workitem}
 
-    \textbf{Data Structures and Program Development}
-    % CS 70 "Data Structures / Program Development
-    \hfill \textbf{January 2012 -- May 2012} \\
-    \textit{Harvey Mudd College, Claremont, California} \\
-    Software development course in \cpp{}
-    utilizing Subversion, Valgrind, and \gdb{}.
-    Projects were pair-programmed and included
-    a \risc{} memory cache simulator,
-    a spell checker,
-    a learning rock-paper-scissors player,
-    refactoring a genetic algorithm,
-    and implementations of BigInt, HashSet, and TreeSet.
 
-    % \blankline
+% \blankline
 
-    % \textbf{Hovercraft}
-    % \hfill \textbf{November 2009 -- April 2010} \\
-    % \textit{Engineering and Aviation Sciences Academy, McMinnville,
-    %   Oregon} \\
-    % Built a hovercraft with a team of fellow students.
+% \begin{workitem}
+%   {Hovercraft}
+%   {November 2009 -- April 2010}
+%   {Engineering and Aviation Sciences Academy, McMinnville, Oregon}
+%   %
+%   Built a hovercraft with a team of fellow students.
+% \end{workitem}
 
-    % \blankline
+% \blankline
 
-    % \textbf{Helicopter Simulator}
-    % \hfill \textbf{2008 -- 2009} \\ % I don't remember which months
-    % \textit{Engineering and Aviation Sciences Academy, McMinnville,
-    %   Oregon} \\
-    % Worked on a team of students and adult mentors reverse engineering
-    % and repairing a helicopter simulator which had fallen into
-    % disrepair.
+% \begin{workitem}
+%   {Helicopter Simulator}
+%   {2008 -- 2009}
+%   \\ % I don't remember which months
+%   {Engineering and Aviation Sciences Academy, McMinnville, Oregon}
+%   %
+%   Worked on a team of students and adult mentors reverse engineering and
+%   repairing a helicopter simulator which had fallen into disrepair.
+% \end{workitem}
 
-\section{Activities}
-    \textbf{Windward Intercollegiate Code War}
-    \hfill \textbf{January 2012, 2013} \\
-    Worked in a team of five to implement a solution to an artificial
-    intelligence challenge in 8 hours.
-    Solutions were run against competing teams
-    from other colleges across the country.
+% \section{Activities}
+% %
+% \begin{workitem}
+%   {Windward Intercollegiate Code War}
+%   {January 2012, 2013}
+%   {Harvey Mudd College, Claremont, California}
+%   %
+%   Worked in a team of five to implement a solution to an artificial
+%   intelligence challenge in 8 hours.  Solutions were run against competing
+%   teams from other colleges across the country.
+% \end{workitem}
 
+%% References not listed on resume,
+%% but available upon request (or looking at this code...)
 % \section{References}
-%     \begin{tabular}[t]{@{}p{3.0in}p{3.0in}}
-%     \textbf{Dr Lelia Hawkins}               & \textbf{Dr Christopher Stone}     \\
-%     Assistant Professor, Chemistry          & Associate Professor, Computer Science \\
-%     Harvey Mudd College                     & Harvey Mudd College               \\
-%     phone: (909) 621-8522                   & phone: (909) 607-8975             \\
-%     email: lelia\_hawkins@hmc.edu            & email: stone@cs.hmc.edu           \\
-%     % ~                                       &   \\
-%     % \textbf{Dr Tom Dietterich}              & \textbf{Dr Susan Martonosi}       \\
-%     % Professor, Computer Science             & Assistant Professor, Math         \\
-%     % Oregon State University                 & Harvey Mudd College               \\
-%     % phone: (541) 737-5539                   & phone: (909) 607-0481             \\
-%     % email: tgd@cs.orst.edu                  & email: martonosi@math.hmc.edu     \\
-%     \end{tabular}
+% %
+% \begin{tabular}[t]{ll}
+%   %{@{}>{\centering\arraybackslash}p{5cm}
+%   %  >{\centering\arraybackslash}p{\textwidth-9.5cm}
+%   %  p{5.5cm}@{}}
+
+%   %% My physics major advisor, and my quantum information instructor
+%   \begin{tabular}[t]{@{}l@{}}
+%     \textbf{Theresa Lynn} \\
+%     Associate Professor, Physics \\
+%     Harvey Mudd College \\
+%     \href{tel:+19096218024}{+1\,909\,621\,8024} \\
+%     \href{mailto:theresa_lynn@hmc.edu}{theresa\_lynn@hmc.edu}
+%   \end{tabular} &
+
+%   %% My clinic project advisor, as well as math clinic director
+%   \begin{tabular}[t]{@{}l@{}}
+%     \textbf{Weiqing Gu} \\
+%     Professor and Clinic Director, Mathematics \\
+%     Harvey Mudd College \\
+%     \href{tel:+19096218929}{+1\,909\,621\,8929} \\
+%     \href{mailto:gu@math.hmc.edu}{gu@math.hmc.edu}
+%   \end{tabular}
+
+%   \\[6 em]
+
+%   %% My boss when I was in Search Infrastructure at Google
+%   \begin{tabular}[t]{@{}l@{}}
+%     \textbf{Michael Eastham} \\
+%     Software Engineer \\
+%     Google \\
+%     \href{tel:+16502531157}{+1\,650\,253\,1157} \\
+%     \href{mailto:meastham@google.com}{meastham@google.com}
+%   \end{tabular} &
+
+%   %% My instructor in multiple CS courses at HMC
+%   \begin{tabular}[t]{@{}l@{}}
+%     \textbf{Ran Libeskind-Hadas} \\
+%     Professor and Department Chair, Computer Science \\
+%     Harvey Mudd College \\
+%     \href{tel:+19096218976}{+1\,909\,621\,8976} \\
+%     \href{mailto:hadas@cs.hmc.edu}{hadas@cs.hmc.edu}
+%   \end{tabular}
+
+%   \\[6 em]
+
+%   %% My boss when I was in KDI at PNNL
+%   \begin{tabular}[t]{@{}l@{}}
+%     \textbf{Courtney Corley} \\
+%     Senior Data Scientist and Team Lead \\
+%     Pacific Northwest National Laboratory \\
+%     \href{tel:+15093752326}{+1\,509\,375\,2326} \\
+%     \href{mailto:court@pnnl.gov}{court@pnnl.gov}
+%   \end{tabular} &
+
+%   %% My research advisor for summer chemistry research
+%   \begin{tabular}[t]{@{}l@{}}
+%     \textbf{Lelia Hawkins} \\
+%     Assistant Professor, Chemistry \\
+%     Harvey Mudd College \\
+%     \href{tel:+19096218522}{+1\,909\,621\,8522} \\
+%     \href{mailto:lelia_hawkins@hmc.edu}{lelia\_hawkins@hmc.edu}
+%   \end{tabular}
+% \end{tabular}
 
 \end{document}
